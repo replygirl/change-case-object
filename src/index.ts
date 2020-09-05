@@ -1,4 +1,6 @@
-import changeCaseObject, { Case } from './change-case-object'
+import changeCase, { Case } from './change-case-object'
+
+export { Case, changeCase }
 
 const {
   camel,
@@ -14,17 +16,17 @@ const {
   snake
 } = Case
 
-export const camelCase = (x: any) => changeCaseObject(camel, x)
-export const capitalCase = (x: any) => changeCaseObject(capital, x)
-export const constantCase = (x: any) => changeCaseObject(constant, x)
-export const dotCase = (x: any) => changeCaseObject(dot, x)
-export const headerCase = (x: any) => changeCaseObject(header, x)
-export const noCase = (x: any) => changeCaseObject(no, x)
-export const paramCase = (x: any) => changeCaseObject(param, x)
-export const pascalCase = (x: any) => changeCaseObject(pascal, x)
-export const pathCase = (x: any) => changeCaseObject(path, x)
-export const sentenceCase = (x: any) => changeCaseObject(sentence, x)
-export const snakeCase = (x: any) => changeCaseObject(snake, x)
+export const camelCase = (x: any) => changeCase(camel, x)
+export const capitalCase = (x: any) => changeCase(capital, x)
+export const constantCase = (x: any) => changeCase(constant, x)
+export const dotCase = (x: any) => changeCase(dot, x)
+export const headerCase = (x: any) => changeCase(header, x)
+export const noCase = (x: any) => changeCase(no, x)
+export const paramCase = (x: any) => changeCase(param, x)
+export const pascalCase = (x: any) => changeCase(pascal, x)
+export const pathCase = (x: any) => changeCase(path, x)
+export const sentenceCase = (x: any) => changeCase(sentence, x)
+export const snakeCase = (x: any) => changeCase(snake, x)
 
 export class CasedObject {
   static camelCase = camelCase
@@ -44,7 +46,7 @@ export class CasedObject {
   constructor(value: any) { Object.assign(this, { _value: value }) }
 
   public changeCase(to: Case): any {
-    Object.assign(this, { _value: changeCaseObject(to, this._value) })
+    Object.assign(this, { _value: changeCase(to, this._value) })
     return this._value
   }
 
