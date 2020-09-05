@@ -5,7 +5,7 @@ Recursively change the case of an object's keys
 ## Installation
 
 ```bash
-yarn add change-case-object
+yarn add @replygirl/change-case-object
 ```
 
 ## Usage
