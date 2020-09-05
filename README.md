@@ -150,8 +150,8 @@ CasedObject.camelCase({ some_key: { some_key: true }})
 #### Instances
 
 ```ts
-const foo = CasedObject.camelCase({ some_key: { some_key: true }})
-console.info(foo.value) // { someKey: { someOtherKey: true }}
+const foo = new CasedObject({ some_key: { 'some other key': true }})
+console.info(foo.value) // { some_key: { 'some other key': true }}
 
 // output the value with keys in a different case
 console.info(foo.snakeCase) // { some_key: { some_other_key: true }}
