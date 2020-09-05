@@ -16,7 +16,7 @@ yarn add change-case-object
 ### Functions
 
 ```js
-import { /* function */ } from 'change-case'
+import { /* function */ } from 'change-case-object'
 ```
 
 - [`camelCase`](#camelcase)
@@ -135,7 +135,7 @@ snakeCase({ 'some key': { 'some other key': true })
 ### `CasedObject` class
 
 ```ts
-import { CasedObject } from 'change-case'
+import { CasedObject } from 'change-case-object'
 ```
 
 #### Static functions
