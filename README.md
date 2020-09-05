@@ -135,7 +135,7 @@ snakeCase({ 'some key': { 'some other key': true })
 ### `CasedObject` class
 
 ```ts
-import { CasedObject } from 'change-case-object'
+import { CasedObject /*, Case */ } from 'change-case-object'
 ```
 
 #### Static functions
@@ -150,16 +150,27 @@ CasedObject.camelCase({ some_key: { some_other_key: true }})
 #### Instances
 
 ```ts
-const foo = new CasedObject({ some_key: { 'some other key': true }})
+const someObj = { some_key: { 'some other key': true }}
+
+// initialize without changing case
+const foo = new CasedObject(someObj)
 console.info(foo.value) // { some_key: { 'some other key': true }}
 
+// initialize and change case
+const bar = new CasedObject(someObj, { case: 'camel' })
+console.info(bar.value) // { someKey: { someOtherKey: true }}
+
+// initialize and change case using enum
+const baz = new CasedObject(someObj, { case: Case.camel })
+console.info(baz.value) // { someKey: { someOtherKey: true }}
+
 // output the value with keys in a different case
-console.info(foo.snakeCase) // { some_key: { some_other_key: true }}
-console.info(foo.value) // { someKey: { someOtherKey: true }}
+console.info(baz.snakeCase) // { some_key: { some_other_key: true }}
+console.info(baz.value) // { someKey: { someOtherKey: true }}
 
 // change the case of the value's keys
-foo.value = foo.snakeCase
-console.info(foo.value) // { some_key: { some_other_key: true }}
+baz.value = baz.snakeCase
+console.info(baz.value) // { some_key: { some_other_key: true }}
 ```
 
 ## License
