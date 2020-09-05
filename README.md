@@ -153,4 +153,4 @@ console.info(baz.value) // { some_key: { some_other_key: true }}
 
 ## License
 
-ISC
+[ISC (c) 2020 replygirl](https://github.com/replygirl/change-case-object/blob/main/LICENSE.md)
