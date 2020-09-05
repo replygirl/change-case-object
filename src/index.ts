@@ -65,3 +65,20 @@ export class CasedObject {
   public get sentenceCase(): any { return this.sentenceCase(this._value) }
   public get snakeCase(): any { return this.snakeCase(this._value) }
 }
+
+export default {
+  Case,
+  changeCase,
+  camelCase,
+  capitalCase,
+  constantCase,
+  dotCase,
+  headerCase,
+  noCase,
+  paramCase,
+  pascalCase,
+  pathCase,
+  sentenceCase,
+  snakeCase,
+  CasedObject
+}
