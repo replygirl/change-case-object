@@ -1,6 +1,6 @@
 {
   "name": "@replygirl/change-case-object",
-  "version": "dev",
+  "version": "0.0.0",
   "description": "Recursively change the case of an object's keys",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

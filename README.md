@@ -36,7 +36,7 @@ import { /* function */ } from 'change-case-object'
 > Transform into a string with the separator denoted by the next word capitalized.
 
 ```ts
-camelCase({ some_key: { some_key: true })
+camelCase({ some_key: { some_other_key: true })
 // { someKey: { someOtherKey: true }}
 ```
 
@@ -45,7 +45,7 @@ camelCase({ some_key: { some_key: true })
 > Transform into a space separated string with each word capitalized.
 
 ```ts
-capitalCase({ some_key: { some_key: true })
+capitalCase({ some_key: { some_other_key: true })
 // { 'Some Key': { 'Some Other Key': true }}
 ```
 
@@ -54,7 +54,7 @@ capitalCase({ some_key: { some_key: true })
 > Transform into upper case string with an underscore between words.
 
 ```ts
-constantCase({ some_key: { some_key: true })
+constantCase({ some_key: { some_other_key: true })
 // { SOME_KEY: { SOME_OTHER_KEY: true }}
 ```
 
@@ -65,7 +65,7 @@ constantCase({ some_key: { some_key: true })
 Why would you do this??
 
 ```ts
-dotCase({ some_key: { some_key: true })
+dotCase({ some_key: { some_other_key: true })
 // { 'some.key': { 'some.other.key': true }}
 ```
 
@@ -74,7 +74,7 @@ dotCase({ some_key: { some_key: true })
 > Transform into a dash separated string of capitalized words.
 
 ```ts
-headerCase({ some_key: { some_key: true })
+headerCase({ some_key: { some_other_key: true })
 // { 'Some-Key': { 'Some-Other-Key': true }}
 ```
 
@@ -92,7 +92,7 @@ noCase({ some_key: { some_other_key: true })
 > Transform into a lower cased string with dashes between words.
 
 ```ts
-paramCase({ some_key: { some_key: true })
+paramCase({ some_key: { some_other_key: true })
 // { 'some-key': { 'some-other-key': true }}
 ```
 
@@ -101,7 +101,7 @@ paramCase({ some_key: { some_key: true })
 > Transform into a string of capitalized words without separators.
 
 ```ts
-pascalCase({ some_key: { some_key: true })
+pascalCase({ some_key: { some_other_key: true })
 // { SomeKey: { SomeOtherKey: true }}
 ```
 
@@ -110,7 +110,7 @@ pascalCase({ some_key: { some_key: true })
 > Transform into a lower case string with slashes between words.
 
 ```ts
-pathCase({ some_key: { some_key: true })
+pathCase({ some_key: { some_other_key: true })
 // { 'some/key': { 'some/other/key': true }}
 ```
 
@@ -119,7 +119,7 @@ pathCase({ some_key: { some_key: true })
 > Transform into a lower case with spaces between words, then capitalize the string.
 
 ```ts
-sentenceCase({ some_key: { some_key: true })
+sentenceCase({ some_key: { some_other_key: true })
 // { 'Some key': { 'Some other key': true }}
 ```
 
@@ -135,7 +135,7 @@ snakeCase({ 'some key': { 'some other key': true })
 ### `CasedObject` class
 
 ```ts
-import { CasedObject } from 'change-case-object'
+import { CasedObject /*, Case */ } from 'change-case-object'
 ```
 
 #### Static functions
@@ -143,23 +143,34 @@ import { CasedObject } from 'change-case-object'
 [All of the individual functions](#functions) are available as static members.
 
 ```ts
-CasedObject.camelCase({ some_key: { some_key: true }})
+CasedObject.camelCase({ some_key: { some_other_key: true }})
 // { someKey: { someOtherKey: true }}
 ```
 
 #### Instances
 
 ```ts
-const foo = CasedObject.camelCase({ some_key: { some_key: true }})
-console.info(foo.value) // { someKey: { someOtherKey: true }}
+const someObj = { some_key: { 'some other key': true }}
+
+// initialize without changing case
+const foo = new CasedObject(someObj)
+console.info(foo.value) // { some_key: { 'some other key': true }}
+
+// initialize and change case
+const bar = new CasedObject(someObj, { case: 'camel' })
+console.info(bar.value) // { someKey: { someOtherKey: true }}
+
+// initialize and change case using enum
+const baz = new CasedObject(someObj, { case: Case.camel })
+console.info(baz.value) // { someKey: { someOtherKey: true }}
 
 // output the value with keys in a different case
-console.info(foo.snakeCase) // { some_key: { some_other_key: true }}
-console.info(foo.value) // { someKey: { someOtherKey: true }}
+console.info(baz.snakeCase) // { some_key: { some_other_key: true }}
+console.info(baz.value) // { someKey: { someOtherKey: true }}
 
 // change the case of the value's keys
-foo.value = foo.snakeCase
-console.info(foo.value) // { some_key: { some_other_key: true }}
+baz.value = baz.snakeCase
+console.info(baz.value) // { some_key: { some_other_key: true }}
 ```
 
 ## License

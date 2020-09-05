@@ -28,6 +28,10 @@ export const pathCase = (x: any) => changeCase(path, x)
 export const sentenceCase = (x: any) => changeCase(sentence, x)
 export const snakeCase = (x: any) => changeCase(snake, x)
 
+export interface CasedObjectOptions {
+  case?: Case
+}
+
 export class CasedObject {
   static camelCase = camelCase
   static capitalCase = capitalCase
@@ -43,7 +47,12 @@ export class CasedObject {
 
   _value: any = {}
 
-  constructor(value: any) { Object.assign(this, { _value: value }) }
+  constructor(
+    value: any,
+    { case: c }: CasedObjectOptions = {}
+  ) {
+    Object.assign(this, { _value: !!c ? changeCase(c, value): value })
+  }
 
   public changeCase(to: Case): any {
     Object.assign(this, { _value: changeCase(to, this._value) })
