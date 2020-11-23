@@ -31,5 +31,6 @@
   ],
   "dependencies": {
     "change-case": "^4.1.1"
-  }
+  },
+  "engines": { "node": "12.x" }
 }

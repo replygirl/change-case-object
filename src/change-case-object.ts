@@ -14,16 +14,15 @@ export enum Case {
   snake = 'snake'
 }
 
-const _default = (
-  to: Case,
-  x: any
-): any =>
+const _default = (to: Case, x: any): any =>
   typeof x !== 'object' || Array.isArray(x)
     ? x
-    :
-      Object.entries(x).reduce((a, [k, v]) => ({
-        ...a,
-        [c[`${to}Case`](k)]: _default(to, v)
-      }), {})
+    : Object.entries(x).reduce(
+        (a, [k, v]) => ({
+          ...a,
+          [c[`${to}Case`](k)]: _default(to, v)
+        }),
+        {}
+      )
 
 export default _default
