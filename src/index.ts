@@ -47,11 +47,8 @@ export class CasedObject {
 
   _value: any = {}
 
-  constructor(
-    value: any,
-    { case: c }: CasedObjectOptions = {}
-  ) {
-    Object.assign(this, { _value: !!c ? changeCase(c, value): value })
+  constructor(value: any, { case: c }: CasedObjectOptions = {}) {
+    Object.assign(this, { _value: !!c ? changeCase(c, value) : value })
   }
 
   public changeCase(to: Case): any {
@@ -59,20 +56,46 @@ export class CasedObject {
     return this._value
   }
 
-  public get value(): any { return this._value }
-  public set value(x: any) { Object.assign(this, { _value: x }) }
+  public get value(): any {
+    return this._value
+  }
+  public set value(x: any) {
+    Object.assign(this, { _value: x })
+  }
 
-  public get camelCase(): any { return this.camelCase(this._value) }
-  public get capitalCase(): any { return this.capitalCase(this._value) }
-  public get constantCase(): any { return this.constantCase(this._value) }
-  public get dotCase(): any { return this.dotCase(this._value) }
-  public get headerCase(): any { return this.headerCase(this._value) }
-  public get noCase(): any { return this.noCase(this._value) }
-  public get paramCase(): any { return this.paramCase(this._value) }
-  public get pascalCase(): any { return this.pascalCase(this._value) }
-  public get pathCase(): any { return this.pathCase(this._value) }
-  public get sentenceCase(): any { return this.sentenceCase(this._value) }
-  public get snakeCase(): any { return this.snakeCase(this._value) }
+  public get camelCase(): any {
+    return this.camelCase(this._value)
+  }
+  public get capitalCase(): any {
+    return this.capitalCase(this._value)
+  }
+  public get constantCase(): any {
+    return this.constantCase(this._value)
+  }
+  public get dotCase(): any {
+    return this.dotCase(this._value)
+  }
+  public get headerCase(): any {
+    return this.headerCase(this._value)
+  }
+  public get noCase(): any {
+    return this.noCase(this._value)
+  }
+  public get paramCase(): any {
+    return this.paramCase(this._value)
+  }
+  public get pascalCase(): any {
+    return this.pascalCase(this._value)
+  }
+  public get pathCase(): any {
+    return this.pathCase(this._value)
+  }
+  public get sentenceCase(): any {
+    return this.sentenceCase(this._value)
+  }
+  public get snakeCase(): any {
+    return this.snakeCase(this._value)
+  }
 }
 
 export default {

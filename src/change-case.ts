@@ -9,7 +9,7 @@ import {
   pascalCase,
   pathCase,
   sentenceCase,
-  snakeCase
+  snakeCase,
 } from 'change-case'
 
 export default {
