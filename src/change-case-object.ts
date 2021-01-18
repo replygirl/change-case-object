@@ -20,7 +20,9 @@ const _default = (to: Case, x: any): any =>
     : Object.entries(x).reduce(
         (a, [k, v]) => ({
           ...a,
-          [c[`${to}Case`](k)]: _default(to, v)
+          [c[`${to}Case`](k)]: typeof v === 'object'
+            ? _default(to, v)
+            : v
         }),
         {}
       )
