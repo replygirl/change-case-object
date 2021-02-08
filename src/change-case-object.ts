@@ -15,7 +15,9 @@ export enum Case {
 }
 
 const _default = (to: Case, x: any): any =>
-  x === null || typeof x !== 'object' || Array.isArray(x)
+  Array.isArray(x)
+    ? x.map(y => _default(to, y))
+    : x === null || typeof x !== 'object'
     ? x
     : Object.entries(x).reduce(
         (a, [k, v]) => ({
