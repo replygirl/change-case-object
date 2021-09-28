@@ -1,5 +1,3 @@
-node_modules
-dist
 .yarn/*
 !.yarn/cache
 !.yarn/patches
@@ -7,3 +5,6 @@ dist
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+node_modules
+
+dist
