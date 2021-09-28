@@ -1,0 +1,54 @@
+diff --git a/bin/ts-mocha b/bin/ts-mocha
+index 41ddc9e641fe30880f7ecfa73437a343b802b161..13f322db62a9d358ebe5fea3dd72f8d3e7acb585 100755
+--- a/bin/ts-mocha
++++ b/bin/ts-mocha
+@@ -2,8 +2,8 @@
+ 
+ 'use strict';
+ 
+-var path = require('path');
+-var spawn = require('child_process').spawn;
++import path from "path";
++import { spawn as spawn$0 } from "child_process";
+ 
+ var MOCHA_PATH = require.resolve('mocha/bin/mocha');
+ var args = [
+diff --git a/package.json b/package.json
+index 9cabf414ec7f7b8078d6b3b12fdc490134b4e5c6..34eaaace762dcdb0c0965a134e08a6b392ce62ec 100644
+--- a/package.json
++++ b/package.json
+@@ -36,7 +36,7 @@
+     "typescript": "4.0.3"
+   },
+   "peerDependencies": {
+-    "mocha": "^3.X.X || ^4.X.X || ^5.X.X || ^6.X.X || ^7.X.X || ^8.X.X"
++    "mocha": "^3.X.X || ^4.X.X || ^5.X.X || ^6.X.X || ^7.X.X || ^8.X.X || ^9.X.X"
+   },
+   "optionalDependencies": {
+     "tsconfig-paths": "^3.5.0"
+diff --git a/src/index.js b/src/index.js
+index b69a77ad15aaf45cd6a91ea7673238ffdebe831f..964fdb67a5354a828ea97163aad9ec3509cc7a05 100644
+--- a/src/index.js
++++ b/src/index.js
+@@ -1,17 +1,16 @@
++import tsNode from "ts-node";
++import "tsconfig-paths/register";
++
+ try {
+   // default ts-node config
+   const project =
+     process.env.TS_NODE_PROJECT ||
+     process.env._TS_PROJECT_PATH__ ||
+     './tsconfig.json';
+-  require('ts-node').register({
++  tsNode.register({
+     project,
+     transpileOnly: true,
+   });
+-  // opt-in tsconfig-paths config
+-  if (process.env.TS_CONFIG_PATHS) {
+-    require('tsconfig-paths/register');
+-  }
+ } catch (error) {
+   console.log('[ERROR] ' + error.message);
+   process.exit(1);
